@@ -1,5 +1,6 @@
 package com.aline.pokedex
 
+import android.R.attr.height
 import android.graphics.drawable.Icon
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -114,12 +115,19 @@ fun StartScreen(modifier: Modifier = Modifier){
 
                 )
             }
+
         )
     }
+    @Composable
+    fun CardPokemon(modifier: Modifier = Modifier,
+    ){
+        Column(modifier = Modifier
+            .height(30.dp)
+            .width(30.dp)
+            .background(Color(156, 39, 176, 255))) { }
+
+    }
+
 
 }
 
-@Composable
-fun CardPokemon(modifier: Modifier = Modifier) {
-    
-}
