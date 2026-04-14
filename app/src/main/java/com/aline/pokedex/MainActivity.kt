@@ -49,6 +49,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aline.pokedex.ui.theme.PokedexTheme
+import com.aline.pokedex.viewmodel.PokemonViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +58,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             PokedexTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    StartScreen(modifier = Modifier.padding(innerPadding))
+                    PokemonScreen(modifier = Modifier.padding(innerPadding))
 
                 }
             }
@@ -66,9 +67,14 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun StartScreen(modifier: Modifier = Modifier){
+fun PokemonScreen(viewModel: PokemonViewModel = viewModel()){
+
+    val pokemon = viewModel.pokemon.observeAsState()
+
     var nameOrId by remember { mutableStateOf("") }
-    Column(modifier = modifier
+
+
+    Column(modifier = Modifier
         .fillMaxSize()
         .background(Color(247, 247, 247, 255)),
 
